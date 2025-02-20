@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('pull'){
             steps {
-                git branch: 'dev', url: 'https://github.com/guru6910/Backend-CRM.git'
+                git branch: 'dev', url: 'https://github.com/prathmeshkaral/BACKEND.git'
             }
         }
         stage('build'){
@@ -15,8 +15,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'passwd', usernameVariable: 'uname')]) {
                 sh 'docker login -u "$uname" -p "$passwd"'
-                sh 'docker build . -t guru6910/b18-backend:latest'
-                sh 'docker push guru6910/b18-backend:latest'
+                sh 'docker build . -t prathmesh72/b18-backend:latest'
+                sh 'docker push prathmesh72/b18-backend:latest'
                 }
             }
         }
